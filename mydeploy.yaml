@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lunar-system
+  name: lunar-system
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: lunar-system
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: lunar-system
+    spec:
+      containers:
+      - image: siddharth67/solar-system:v9
+        name: solar-system
+        imagePullPolicy: Always
+        ports: 
+        - containerPort: 80
