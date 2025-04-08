@@ -1,0 +1,39 @@
+pipeline 
+ {
+           agent {label 'main'}
+  stages {
+   
+           stage('checkout')
+     		  {
+                 steps {
+                          echo "----Now I will try to dpeloy Lunar system----"  
+                       }
+              }
+          stage('build')
+         	  {
+      
+                   environment {
+                                JOB_NAME = "${env.JOB_NAME}"
+                               }
+                   steps  {
+                                timestamps() 
+				                     {
+										sh "pwd"
+										sh "whoami"
+										echo "current job name : Lunar system"
+
+										pwsh """ kubectl apply -f ./jenkins/mydeploy.yaml """ 
+                                               
+                                        pwsh """ kubectl  apply -f ./jenkins/myservice.yaml """
+              
+                                     }
+                          }           
+              }
+         }
+
+	post {
+		failure {
+					echo "Execution failed unfortunately"							
+				}
+		}      
+ }
