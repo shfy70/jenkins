@@ -22,9 +22,9 @@ pipeline
 										sh "whoami"
 										echo "current job name : Lunar system"
 
-										pwsh """ kubectl  apply -f ./jenkins/blob/main/mydeploy.yaml """ 
+										sh """ kubectl  apply -f ./mydeploy.yaml """ 
                                                
-                                        pwsh """ kubectl  apply -f ./jenkins/blob/main/myservice.yaml """
+                                                                                 sh """ kubectl  apply -f ./myservice.yaml """
               
                                      }
                           }           
