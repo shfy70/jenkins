@@ -1,7 +1,7 @@
 pipeline 
  {
-   agent
-  stages {
+   agent {label 'main'}
+   stages {
    
            stage('checkout')
      		  {
