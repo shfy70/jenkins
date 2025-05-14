@@ -1,7 +1,7 @@
 pipeline 
  {
-           agent {label 'main'}
-  stages {
+   agent {label 'main'}
+   stages {
    
            stage('checkout')
      		  {
@@ -22,9 +22,15 @@ pipeline
 										sh "whoami"
 										echo "current job name : Lunar system"
 
+<<<<<<< HEAD:jenkinsfile
 										pwsh """ kubectl  apply -f ./mydeploy.yaml """ 
                                                
                                         pwsh """ kubectl  apply -f ./myservice.yaml """
+=======
+										sh """ kubectl  apply -f ./mydeploy.yaml """ 
+                                               
+                                                                                 sh """ kubectl  apply -f ./myservice.yaml """
+>>>>>>> f06c4438c0e1994c784ba42447e2c4a74d70f761:Jenkinsfile
               
                                      }
                           }           
